@@ -1,0 +1,52 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    width: 1200px;
+    display: flex;
+    margin: 0px auto;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+#yellow {
+    color: yellow;
+}
+
+.heading {
+    font-size: 25px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    transition: 0.1s;
+    color: yellow;
+    text-decoration: underline;
+}
+
+
+body {
+    background-color: #E9E7DA;
+}

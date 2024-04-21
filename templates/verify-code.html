@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block title %}<title>E-Commerce - Verify Code</title>{% endblock title %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="flash">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="conatainer">
+    <h1>Verify Code</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.code.label }}<br>
+            {{ form.code }}<br>
+            {% for error in form.code.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

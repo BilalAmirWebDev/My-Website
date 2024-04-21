@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block title %}<title>E-Commerce - Products</title>{% endblock title %}
+{% block js %}
+<script src="/static/js/delete.js"></script>{% endblock js %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="flash">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+    <h1 class="heading">Products</h1>
+    {% for product in products %}
+    <a href="{{ url_for('product' , id=product.id) }}" style="text-decoration: none;">
+        <div class="products-box">
+            {% if product.product_image %}
+            <img src="{{ url_for('static', filename=product.product_image) }}" width="400" alt="Product Image">
+            {% endif %}
+            <h1 class="product-heading">{{ product.product_name }}</h1>
+            <h3 class="product-slug">{{ product.product_slug }}</h3>
+            <p class="product-paragraph">PKR {{ product.product_price }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block title %}<title>E-Commerce - Profile</title>{% endblock title %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="flash">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+<div class="container"> 
+    <h1>Welcome {{ user.username }}</h1>
+    <h2>Name: {{ user.name }}</h2>
+    <h2>Username: {{ user.username }}</h2>
+    <h2>Date Joined: {{ user.date_joined.strftime('%d-%b-%Y')}}</h2>
+    <a href="{{ url_for('DeleteUser' , id=user.id) }}" class="delete-btn">Delete</a>
+</div>
+{% endwith %}
+{% endblock content %}

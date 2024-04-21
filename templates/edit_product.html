@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block title %}<title>E-Commerce - Edit Product</title>{% endblock title %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="flash">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.product_name.label }}{{ form.product_name }}
+        {{ form.product_slug.label }}{{ form.product_slug }}
+        {{ form.product_desc.label }}{{ form.product_desc }}
+        {{ form.product_image.label }}{{ form.product_image }}
+        {{ form.product_price.label }}{{ form.product_price }}
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock content %}

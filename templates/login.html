@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block title %}
+    <title>E-Commerce - Login</title>
+{% endblock title %}
+{% block css_page %}
+    <link rel="stylesheet" href="/static/css/login.css">
+{% endblock css_page %}
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="container"> 
+        <h1 class="heading-page">Login</h1>
+        <form method="POST" class="login-form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label }}
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(class="form-control") }}
+            </div>
+            {{ form.submit(class="btn") }}
+        </form>
+        <p class="signup-link">Don't have an account? <a href="/signup">Signup here</a></p>
+    </div>
+{% endblock content %}

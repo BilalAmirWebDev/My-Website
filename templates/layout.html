@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>E-Commerce Website</title>{% endblock title %}
+    {% block css %}<link rel="stylesheet" href="/static/css/layout.css">{% endblock css %}
+    {% block css_page %}{% endblock css_page %}
+    {% block flash %}<link rel="stylesheet" href="/static/css/flash.css">{% endblock flash %}
+    {% block js %}{% endblock js %}
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1 class="heading">E-Commerce <span id="yellow">Website</span></h1>
+            <ul>
+                <li><a href="{{ url_for('products') }}">Products</a></li>
+                {% if current_user.is_authenticated %}
+                    {% if current_user.id == 1 and current_user.username == "Admin" %}
+                    <li><a href="{{ url_for('AddProducts') }}">Add Products</a></li>
+                    {% endif %}
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+</body>
+
+</html>
